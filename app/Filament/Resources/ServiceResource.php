@@ -11,6 +11,7 @@ use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Notifications\Notification;
 use Filament\Resources\Resource;
+use Filament\Support\Enums\FontWeight;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
@@ -51,12 +52,14 @@ class ServiceResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('customer.name')
                     ->numeric()
+                    ->searchable()
+                    ->weight(FontWeight::Bold)
                     ->sortable(),
                 Tables\Columns\TextColumn::make('service_date')
-                    ->dateTime()
+                    ->date()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('next_service_date')
-                    ->dateTime()
+                    ->date()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('serviceType.name')
                     ->sortable(),
